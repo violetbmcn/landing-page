@@ -8,14 +8,20 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: #000;
-            color: #fff;
+            background-color: #d3d3d3; 
             font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            cursor: pointer; /* Visual cue that the page is clickable */
         }
         img {
-            width: 100vw;
+            width: 60vw;
+            height: auto;
             display: block;
-            margin-bottom: 8vh; 
+            pointer-events: none; /* Ensures clicks pass through to the body */
         }
         .footer-bar {
             position: fixed;
@@ -23,17 +29,15 @@
             left: 0;
             width: 100%;
             height: 8vh;
-            padding: 0 2vw;
-            background-color: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(8px);
+            background-color: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
             display: flex;
             align-items: center;
             justify-content: center;
             z-index: 1000;
-            box-sizing: border-box;
+            color: #333;
         }
         .song-title {
-            /* Scales font size relative to window width */
             font-size: 2.5vw;
             white-space: nowrap;
             text-transform: lowercase;
@@ -43,14 +47,10 @@
 </head>
 <body>
 
-    <img src="landingimage.jpg" alt="Landing Image">
-    
-    <div class="footer-bar">
-        <span class="song-title">stuck in a car with angels - julie</span>
-    </div>
+    <img src="landingimage2.jpg" alt="Landing Image">
 
-    <audio id="bgMusic" autoplay loop>
-        <source src="stuck in a car with angels [-GEjqO8J234].mp3" type="audio/mpeg">
+    <audio id="bgMusic" loop>
+        <source src="IMG_1509.MOV" type="audio/mpeg">
     </audio>
 
     <script>
@@ -58,8 +58,12 @@
         audio.volume = 0.2;
 
         window.addEventListener('click', () => {
-            audio.play();
-        }, { once: true });
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+        });
     </script>
 
 </body>
